@@ -12,11 +12,18 @@ const dragndrop = function () {
         whichArt.style.zIndex = 10;
     }
 
+    function moveDragOver(e) {
+        e.preventDefault();
+    }
+
     function moveDrop(e) {
         e.preventDefault();
-        
+        whichArt.style.left = e.pageX - myX + 'px';
+        whichArt.style.top = e.pageY - myY + 'px';
     }
 
     document.querySelector('body').addEventListener('dragstart', movestart, false);
+    document.querySelector('body').addEventListener('dragover', moveDragOver, false);
     document.querySelector('body').addEventListener('drop', moveDrop, false);
+
 }();
