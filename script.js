@@ -30,8 +30,20 @@ const dragndrop = function () {
         whichArt.style.top = e.pageY - myY + 'px';
     }
 
+    function touchStart(e) {
+        e.preventDefault();
+        let whichArt = e.target;
+        let touch = e.touches[0];
+        let moveOffsetX = whichArt.offsetLeft - touch.pageX;
+        let moveOffsetY = whichArt.offsetTop - touch.pageY;
+        resetZ();
+        whichArt.style.zIndex = 10;
+    }
+
     document.querySelector('body').addEventListener('dragstart', movestart, false);
     document.querySelector('body').addEventListener('dragover', moveDragOver, false);
     document.querySelector('body').addEventListener('drop', moveDrop, false);
+
+    document.querySelector('body').addEventListener('touchstart', touchStart, false);
 
 }();
