@@ -5,10 +5,18 @@ const dragndrop = function () {
     let myY = '';
     let whichArt = '';
 
+    function resetZ() {
+        let elements = document.querySelectorAll('img');
+        for (let i = elements.length - 1; i >= 0; i--) {
+            elements[i].style.zIndex = 5;
+        }
+    }
+
     function movestart(e) {
         whichArt = e.target;
         myX = e.offsetX === undefined ? e.layerX : e.offsetX;
         myY = e.offsetY === undefined?  e.layerY : e.offsetY;
+        resetZ();
         whichArt.style.zIndex = 10;
     }
 
