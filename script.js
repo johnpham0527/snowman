@@ -4,20 +4,22 @@ const dragndrop = function () {
     let myX = '';
     let myY = '';
     let whichArt = '';
+    let zIndex = 6;
 
-    function resetZ() {
-        let elements = document.querySelectorAll('img');
-        for (let i = elements.length - 1; i >= 0; i--) {
-            elements[i].style.zIndex = 5;
-        }
-    }
+    // function resetZ() {
+    //     let elements = document.querySelectorAll('img');
+    //     for (let i = elements.length - 1; i >= 0; i--) {
+    //         elements[i].style.zIndex = 5;
+    //     }
+    // }
 
     function movestart(e) {
         whichArt = e.target;
         myX = e.offsetX === undefined ? e.layerX : e.offsetX;
         myY = e.offsetY === undefined?  e.layerY : e.offsetY;
-        resetZ();
-        whichArt.style.zIndex = 10;
+        // resetZ();
+        // whichArt.style.zIndex = 10;
+        whichArt.style.zIndex = zIndex++;
     }
 
     function moveDragOver(e) {
@@ -36,8 +38,9 @@ const dragndrop = function () {
         let touch = e.touches[0];
         let moveOffsetX = whichArt.offsetLeft - touch.pageX;
         let moveOffsetY = whichArt.offsetTop - touch.pageY;
-        resetZ();
-        whichArt.style.zIndex = 10;
+        // resetZ();
+        // whichArt.style.zIndex = 10;
+        whichArt.style.zIndex = zIndex++;
 
         whichArt.addEventListener('touchmove', function() {
             let positionX = touch.pageX + moveOffsetX;
